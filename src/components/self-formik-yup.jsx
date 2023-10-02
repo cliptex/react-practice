@@ -1,92 +1,87 @@
-import React from 'react';
-import { Button, Container, Form, FormCheck, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
-import * as Yup from 'yup';
-import { useFormik } from 'formik';
+import axios from 'axios';
+import { useFormik } from 'formik'
+import React from 'react'
+import { Button, Container, Form, FormCheck, FormControl, FormGroup, FormLabel } from 'react-bootstrap'
+import * as Yup from 'yup'
+
 
 const SelfFormikYup = () => {
 
-  const values = [
-    { dev: 'firstName', user: 'First Name' },
-    { dev: 'lastName', user: 'Last Name' },
-    { dev: 'email', user: 'Email' },
-    ];
-    
-    const gendersCheck = [
-            {dev: "erkek", user:"Erkek"},
-            {dev: "kadin", user:"Kadın"},
-            {dev: "diger", user:"Diğer"}
-    ]
+  const formItems = [
+    {value: "isim", label:"İsim"},
+    {value: "soyisim", label:"Soyisim"},
+    {value: "email", label:"Email"},
+  ]
 
-  const initialValues = {
-    firstName: '',
-    lastName: '',
-    email: '', 
-    gender: '',
-    terms: false,
-  };
+  const initialValues = ({
+    isim: "",
+    soyisim: "",
+    email: "",
+    terms: false
+  })
 
   const validationSchema = Yup.object({
-    firstName: Yup.string().required().min(2),
-    lastName: Yup.string().required().min(2),
-    email: Yup.string().required().email(), 
-      terms: Yup.boolean().required(),
-    gender: Yup.string().required()
-  });
+    isim: Yup.string().required().min(2),
+    soyisim: Yup.string().required().min(2),
+    email: Yup.string().required().email(),
+    terms: Yup.boolean().required().isTrue("Kullanıcı Sözleşmesini Kabul Etmeniz Gereklidir.")
+  })
 
-  const onSubmit = (values) => {
-    console.log(values);
-  };
+  const onSubmit = async (values) => {
+    const dto = {
+      isim: values.isim,
+      soyisim: values.soyisim,
+      email: values.email,
+      terms: values.terms,
+    }
+    
+    try {
+      const res = await axios.post(`https://651068243ce5d181df5d39c5.mockapi.io/feedback`, dto)
+      alert(JSON.stringify(res.data))
+    }
+    catch (err) {
+      alert("Hata oluştu")
+    }
+    
+  }
+
 
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit,
-  });
-
+    onSubmit
+  })
   return (
-    <Container>
-          <Form className="d-flex flex-column gap-4 mt-4" onSubmit={formik.handleSubmit}>
-              
-      {values.map((val, i) => (
-    <FormGroup controlId={val.dev} key={i}>
-        <Form.Label>{val.user}</Form.Label>
-        <FormControl
-            type="text"
-            placeholder={`Enter Your ${val.user}`}
-            {...formik.getFieldProps(val.dev)}
-            isInvalid={formik.errors[val.dev] && formik.touched[val.dev]}
+    <Container className="mt-4">
+      <h1 className="mb-4">Hesap Oluştur</h1>
+      <Form className="d-flex flex-column gap-4" onSubmit={formik.handleSubmit}>
+        {
+          formItems.map((item, i) => (
+            <FormGroup key={i} controlId={item.value}>
+              <FormLabel>{ item.label}</FormLabel>
+            <FormControl
+                placeholder={`Lütfen ${item.label} Giriniz.`}
+                {...formik.getFieldProps(item.value)}
+                isInvalid={formik.errors[item.value] && formik.touched[item.value]}
               />
-              {formik.errors[val.dev] && formik.touched[val.dev] &&
-                  <p className="text-danger">*{formik.errors[val.dev]}</p>}
-    </FormGroup>
-))}
-
-        <FormGroup>
-          <FormLabel>Gender</FormLabel>
+              {formik.errors[item.value] && formik.touched[item.value] && <p className="text-danger">*{ formik.errors[item.value]}</p>}
+            </FormGroup>
+            
+          ))
+        }
+        <FormGroup controlId="terms">
+          <FormCheck
+            type='checkbox'
+            label="Kullanıcı sözleşmesini okudum ve kabul ediyorum."
+            {...formik.getFieldProps("terms")}
+            isInvalid={formik.errors.terms && formik.touched.terms}
+          />
+          {formik.errors.terms && formik.touched.terms && <p className="text-danger">*{ formik.errors.terms}</p>}
         </FormGroup>
-              <FormGroup>
-              {
-                      gendersCheck.map((gender, i) => (
-                          <FormCheck
-                              key={i}
-                              type="radio"
-                              inline
-                              isInvalid={formik.errors[gender]}
-                              name="gender"
-                              id={gender.dev}
-                              label={gender.user}
-                              {...formik.getFieldProps[gender]}
-                          />
-                      ))
-                  }
-              </FormGroup>
-        <FormGroup>
-          <FormCheck type="checkbox" {...formik.getFieldProps('terms')} id="terms" name="terms" label="Lütfen kullanıcı sözleşmesini kabul edin." />
-        </FormGroup>
-        <Button type="submit">Gönder</Button>
+        <Button variant="success" type="submit">Gönder</Button>
       </Form>
     </Container>
-  );
-};
+  )
+}
 
-export default SelfFormikYup;
+export default SelfFormikYup
