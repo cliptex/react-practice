@@ -1,7 +1,9 @@
+import SelfFormikYup from './components/self-formik-yup';
+
 function App() {
   return (
     <>
-      <h1>hgello</h1>
+      <SelfFormikYup />
     </>
   );
 }
