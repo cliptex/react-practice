@@ -22,8 +22,8 @@ const Employees = () => {
                           <CardHeader>{employed.name}</CardHeader>
                           <CardBody>{employed.username} </CardBody>
                           <CardBody>{employed.email}</CardBody>
-                          <CardBody>{employed.address.city} | {employed.address.street}</CardBody>
-                          <CardFooter><Link to={`/employees/${employed.id}`}><Button>See Employed</Button></Link></CardFooter>
+                          <CardBody>{employed.address?.city} | {employed.address?.street}</CardBody>
+                          <CardFooter><Link to={`/employees/${employed.id}`}><Button>Details</Button></Link></CardFooter>
                           </Card>
                           </Col>
                   ))
