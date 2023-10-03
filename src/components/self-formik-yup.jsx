@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useFormik } from 'formik'
 import React from 'react'
 import { Button, Container, Form, FormCheck, FormControl, FormGroup, FormLabel } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup'
 
 
@@ -80,6 +81,7 @@ const SelfFormikYup = () => {
         </FormGroup>
         <Button variant="success" type="submit">Gönder</Button>
       </Form>
+      <Link to="/"><Button>Back to main page</Button></Link>
     </Container>
   )
 }

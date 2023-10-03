@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Button, Container, Form, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const FormikDel = () => {
   const [id, setId] = useState('');
@@ -40,6 +41,7 @@ const FormikDel = () => {
         </Button>
         {error && <p className={isGreen}>{error}</p>}
       </Form>
+      <Link to="/"><Button>Back to main page</Button></Link>
     </Container>
   );
 };

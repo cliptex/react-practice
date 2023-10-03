@@ -1,6 +1,7 @@
 import { useFormik } from 'formik'
 import React from 'react'
-import { Container, Form } from 'react-bootstrap'
+import { Button, Container, Form } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import * as Yup from 'yup'
 
 const FormikYup = () => {
@@ -60,6 +61,7 @@ const FormikYup = () => {
               
               <button type='submit'>Formu Gönder</button>
           </Form>
+          <Link to="/"><Button>Back to main page</Button></Link>
     </Container>
   )
 }

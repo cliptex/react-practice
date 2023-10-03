@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
-import { Outlet, Link } from 'react-router-dom'
+import {  Link, Outlet} from 'react-router-dom'
 
 const UserLayout = () => {
     return (
@@ -14,12 +14,12 @@ const UserLayout = () => {
             <Link to={`/home`}>Home</Link>
             <Link to={`/login`}>Login</Link>
             <Link to={`/deleteAccount`}>Delete Account</Link>
-            <Link to={`/asdasdasd`}>Geçersiz Link</Link>
+            <Link to={`/invalid`}>Geçersiz Link</Link>
           </Nav>
         </Navbar.Collapse>
-      </Container>
-    </Navbar>
-        <Outlet />
+          </Container>
+          <Outlet />
+        </Navbar>
         <footer>Created by Enes ALICI &copy;2023</footer>
         </Container>
   )

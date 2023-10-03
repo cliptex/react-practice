@@ -5,6 +5,7 @@ import { Button, Container, Form, FormControl, FormLabel } from 'react-bootstrap
 import * as Yup from 'yup'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { Link } from 'react-router-dom';
 
 const FormikYup2 = () => {
 
@@ -78,6 +79,7 @@ const FormikYup2 = () => {
                     Send
                 </Button>
             </Form>
+            <Link to="/"><Button>Back to main page</Button></Link>
         </Container>
     );
 };

@@ -1,5 +1,6 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
+import { Button, ButtonGroup, Container } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const HomePage = () => {
   return (
@@ -9,7 +10,16 @@ const HomePage = () => {
           Exercitationem ad modi, repellendus tenetur at, corporis consequatur dignissimos minus explicabo aliquid vero fugiat. Placeat, itaque mollitia! Voluptates quas quos debitis nam, molestiae rerum placeat veritatis, eum libero, sint unde.
           Eius, error magnam possimus aliquam quis temporibus corporis quo vel ut optio culpa officia sapiente recusandae molestias aliquid quos veritatis pariatur porro consequatur! Reiciendis explicabo nemo ullam natus illum iure?
           Illum magni necessitatibus, quibusdam pariatur voluptas exercitationem aspernatur nihil officiis ratione repudiandae excepturi atque harum ducimus corporis assumenda similique aut. Et esse harum nobis maxime voluptatem aliquam ea fugit! Ipsum?
-              Placeat, eum ad laboriosam veniam excepturi quis sit eius delectus hic impedit eligendi laudantium magnam eos recusandae tempore? Neque quis iure delectus doloremque obcaecati maxime illum voluptas repellat architecto consequatur!</p>
+        Placeat, eum ad laboriosam veniam excepturi quis sit eius delectus hic impedit eligendi laudantium magnam eos recusandae tempore? Neque quis iure delectus doloremque obcaecati maxime illum voluptas repellat architecto consequatur!</p>
+      
+      <ButtonGroup>
+      <Link to="manual"><Button>manual</Button></Link>
+      <Link to="formik"><Button>formik</Button></Link>
+      <Link to="formikYup"><Button>formikYup</Button></Link>
+      <Link to="self-formik"><Button>self-formik</Button></Link>
+      <Link to="delete"><Button>delete</Button></Link>
+      </ButtonGroup>
+
           <h2>Kullanıcı Ara Yüzündesiniz</h2>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse ex veritatis quibusdam aspernatur at laborum fugiat nemo dolorum est dolore blanditiis fugit earum non, placeat vel nam suscipit id provident.
           Explicabo, recusandae. Distinctio similique nobis maxime corporis doloremque officiis a aliquam autem hic. Tempore, natus voluptatibus! Architecto, natus nisi! Cupiditate explicabo aperiam at in ex ab veritatis quibusdam sunt dignissimos?

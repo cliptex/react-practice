@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Container, Form, FormCheck, FormGroup } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 
 
@@ -198,7 +199,8 @@ const FormManual = () => {
                   />
               </FormGroup>
                   <Button type="submit">Sent</Button>
-                </Form>
+          </Form>
+          <Link to="/"><Button>Back to main page</Button></Link>
     </Container>
   )
 }

@@ -1,11 +1,11 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import HomePage from '../pages/home/HomePage';
+import { createBrowserRouter } from 'react-router-dom';
+//LAYOUTS
 import UserLayout from '../layouts/user-layout';
-import ErrorPage from '../pages/error/ErrorPage';
-import SelfFormikYup from '../components/self-formik-yup';
-import FormikDel from '../components/formikDelete';
+//PAGES
+import HomePage from '../pages/home/HomePage';
+import FormItems from '../components/self-formik-yup';
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     path: '/',
     element: <UserLayout />,
@@ -18,25 +18,10 @@ const router = createBrowserRouter([
         path: 'home',
         element: <HomePage />,
       },
-
       {
         path: 'login',
-        element: <SelfFormikYup />,
-      },
-      {
-        path: 'deleteAccount',
-        element: <FormikDel />,
+        element: <FormItems />,
       },
     ],
   },
-  {
-    path: '*',
-    element: <ErrorPage />,
-  },
 ]);
-
-const AppRouter = () => {
-  return <RouterProvider router={router} />;
-};
-
-export default AppRouter;
