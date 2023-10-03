@@ -1,9 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 //LAYOUTS
-import UserLayout from '../layouts/user-layout';
+import UserLayout from '../layout/UserLayout';
 //PAGES
 import HomePage from '../pages/home/HomePage';
-import FormItems from '../components/self-formik-yup';
+//COMPONENTS
+import Employees from '../pages/employees/employees';
+import Employed from '../pages/employees/employed';
 
 export const router = createBrowserRouter([
   {
@@ -15,12 +17,14 @@ export const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: 'home',
-        element: <HomePage />,
-      },
-      {
-        path: 'login',
-        element: <FormItems />,
+        path: 'employees',
+        element: <Employees />,
+        children: [
+          {
+            path: ':id',
+            element: <Employed />,
+          },
+        ],
       },
     ],
   },

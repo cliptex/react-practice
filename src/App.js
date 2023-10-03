@@ -1,11 +1,7 @@
-import FormikDel from './components/formikDelete';
-import SelfFormikYup from './components/self-formik-yup';
-
 function App() {
   return (
     <>
-      <SelfFormikYup />
-      <FormikDel />
+      <h1>APP JS</h1>
     </>
   );
 }
